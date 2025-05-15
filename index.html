@@ -4,33 +4,113 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Tessa Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="sidebar">
         <div class="logo">
-            <img src="img/logo.png" alt="Tessa Logo" class="logo-icon"/>
+            <div class="logo-icon">
+                <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5C27 5 10 21 10 43c0 10 4 18 10 24v18l18-10c4 1 8 2 12 2 23 0 40-17 40-39S73 5 50 5z" fill="#3F73F1"/>
+                    <path d="M45 60c10-20 25-30 25-30s-25 0-35 20c-5 10 0 15 10 10z" fill="white"/>
+                </svg>
+            </div>
             <div class="logo-text">Tessa</div>
         </div>
-        <div class="nav-item">📊 <span>Dashboard</span></div>
-        <div class="nav-item">📅 <span>Consultas</span></div>
-        <div class="nav-item">👤 <span>Pacientes</span></div>
-        <div class="nav-item">💬 <span>Mensagens</span></div>
+        <div class="nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-4"><path d="M21 15V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v15"/><path d="M9 22V12"/><path d="M15 22v-6"/><path d="M3 17h18"/></svg>
+            <span>Dashboard</span>
+        </div>
+        <div class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days"><path d="M5 20h14"/><path d="M17 3v4"/><path d="M7 3v4"/><path d="M3 11h18"/><path d="M16 15v-1"/><path d="M8 15v-1"/><path d="M16 19v-1"/><path d="M8 19v-1"/></svg>
+            <span>Consultas</span>
+        </div>
+        <div class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Pacientes</span>
+        </div>
+        <div class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square"><path d="M4 21a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4z"/><path d="M9 17v-4c0-1.333-.8-4-3-4"/><path d="M15 17v-4c0-1.333.8-4 3-4"/></svg>
+            <span>Mensagens</span>
+        </div>
     </div>
 
     <div class="main">
-        <h1>Consultas</h1>
-        <button class="new-button" onclick="openModal()">+ Nova Consulta</button>
+        <div class="dashboard-header">
+            <h1>Consultas de Hoje</h1>
+            <button class="new-button" onclick="openModal()">+ Nova Consulta</button>
+        </div>
 
-        <div id="cards-container"></div>
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="summary-card-content">
+                    
+                    <div class="summary-card-info">
+                        <div class="summary-card-title">Total Agendadas</div>
+                        <div class="summary-card-value" id="total-agendadas">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-content">
+                    
+                    <div class="summary-card-info">
+                        <div class="summary-card-title">Lembretes Enviados</div>
+                        <div class="summary-card-value" id="lembretes-enviados">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-content">
+                    
+                    <div class="summary-card-info">
+                        <div class="summary-card-title">Confirmadas</div>
+                        <div class="summary-card-value" id="confirmadas">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-content">
+                    
+                    <div class="summary-card-info">
+                        <div class="summary-card-title">Canceladas</div>
+                        <div class="summary-card-value" id="canceladas">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Próximas Consultas</h2>
+        <div id="cards-container">
+            <table id="consultas-table">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Paciente</th>
+                        <th>Médico</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="modal" id="modal">
         <div class="modal-content">
             <h3>Nova Consulta</h3>
             <input type="text" id="nome" placeholder="Nome do paciente" />
-            <input type="text" id="hora" placeholder="Horário (ex: 14h30)" />
+            <input type="text" id="hora" placeholder="Hora (ex: 14:30)" />
+             <input type="text" id="medico" placeholder="Médico" />
+            <select id="status">
+                <option value="Confirmado">Confirmado</option>
+                <option value="Sem resposta">Sem resposta</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
             <button onclick="adicionarConsulta()">Salvar</button>
         </div>
     </div>
