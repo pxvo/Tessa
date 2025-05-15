@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tessa Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Tessa Logo" class="logo-icon"/>
+            <div class="logo-text">Tessa</div>
+        </div>
+        <div class="nav-item">📊 <span>Dashboard</span></div>
+        <div class="nav-item">📅 <span>Consultas</span></div>
+        <div class="nav-item">👤 <span>Pacientes</span></div>
+        <div class="nav-item">💬 <span>Mensagens</span></div>
+    </div>
+
+    <div class="main">
+        <h1>Consultas</h1>
+        <button class="new-button" onclick="openModal()">+ Nova Consulta</button>
+
+        <div id="cards-container"></div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h3>Nova Consulta</h3>
+            <input type="text" id="nome" placeholder="Nome do paciente" />
+            <input type="text" id="hora" placeholder="Horário (ex: 14h30)" />
+            <button onclick="adicionarConsulta()">Salvar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f7fc;
+}
+.sidebar {
+    width: 240px;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #3F73F1; /* Re-adicionado o fundo azul */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: #fff;  Removido */
+    font-weight: bold;
+    font-size: 18px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.logo-icon img { /* Estilizando a imagem DENTRO do logo-icon */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Garante que a imagem caiba dentro do container */
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1e2a47;
+}
+.nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 10px;
+    margin-bottom: 10px;
+    color: #3f4d67;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+.nav-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #3F73F1;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+}
+.nav-item:hover::before {
+    transform: scaleY(1);
+}
+.nav-item:hover {
+    background-color: #eef2fa;
+    border-radius: 8px;
+}
+.nav-item span {
+    font-size: 16px;
+}
+.main {
+    flex: 1;
+    padding: 30px;
+}
+.main h1 {
+    margin-bottom: 10px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 300px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.new-button {
+    background-color: #3F73F1;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #3F73F1;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08);}
+}
