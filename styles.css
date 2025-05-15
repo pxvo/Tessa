@@ -24,23 +24,26 @@ body {
 .logo-icon {
     width: 30px;
     height: 30px;
-    background-color: #3F73F1; /* Re-adicionado o fundo azul */
+    background-color: #3F73F1; /* Mantém o fundo azul */
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* color: #fff;  Removido */
+    color: #fff; /* Mantém o texto branco */
     font-weight: bold;
     font-size: 18px;
     animation: pulse 2s infinite ease-in-out;
+    position: relative; /* Adiciona posicionamento relativo para a imagem */
+    overflow: hidden;  /* Importante: Garante que a imagem não ultrapasse o border-radius */
 }
-
-.logo-icon img { /* Estilizando a imagem DENTRO do logo-icon */
+.logo-icon img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Garante que a imagem caiba dentro do container */
+    object-fit: contain;
+    position: absolute; /* Posiciona a imagem absolutamente dentro do .logo-icon */
+    top: 0;
+    left: 0;
 }
-
 .logo-text {
     font-size: 22px;
     font-weight: 600;
